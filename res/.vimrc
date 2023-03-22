@@ -1,5 +1,7 @@
 syntax on
 
+colorscheme pablo
+
 " Deal with multiple unsaved buffers
 set hidden
 
@@ -24,7 +26,7 @@ set showmatch
 set hlsearch
 
 " Show special chars
-set listchars=tab:→\ ,trail:·,eol:\
+set listchars=tab:→\ ,trail:·,space:·
 set list
 
 " Auto completion
