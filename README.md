@@ -42,7 +42,7 @@ docker run -it --rm -v ~/Desktop:/home/marvin/docker jkutkut/docker4c
 ## Versions:
 You can see all the containers already created [here](https://hub.docker.com/repository/docker/jkutkut/docker4c/general) or build your own from the code from this repository.
 ```zsh
-docker run -it --rm -v $(PWD):/home/marvin/docker jkutkut/docker4c:1.X.X
+docker run -it --rm -v $(PWD):/home/marvin/docker jkutkut/docker4c:v1.X.X
 ```
 
 ## Special thanks:

@@ -1,38 +1,32 @@
 FROM ubuntu:18.04
 
 RUN apt-get update && apt-get install -y \
- sudo \
- curl \
- zsh \
- zip \
- git \
- vim \
- build-essential \
- valgrind \
- readline-common \
- libreadline-dev \
- clang \
- && rm -rf /var/lib/apt/lists/*
-
-# Sanitize in clang
-
-RUN useradd -m -s /bin/zsh marvin && \
+	sudo \
+	curl \
+	zsh \
+	zip \
+	git \
+	vim \
+	build-essential \
+	valgrind \
+	readline-common \
+	libreadline-dev \
+	clang \
+	&& rm -rf /var/lib/apt/lists/* && \
+	useradd -m marvin && \
 	echo "marvin ALL=(ALL) ALL" > /etc/sudoers.d/marvin && \
 	chmod 0440 /etc/sudoers.d/marvin && \
-	passwd -d marvin
-
-RUN chsh -s zsh marvin
+	passwd -d marvin && \
+	chsh -s zsh marvin
 
 USER marvin
 
-WORKDIR /home/marvin/
+COPY --chown=marvin:marvin res/.vimrc res/.zshrc /home/marvin/
 
-RUN curl -s https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh --output ./install.sh && \
-	sh ./install.sh --unattended --skip-chsh --keep-zshrc && \
-	rm ./install.sh
+RUN curl -s https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh --output /home/marvin/install.sh && \
+	/bin/sh /home/marvin/install.sh --unattended --skip-chsh --keep-zshrc && \
+	rm /home/marvin/install.sh
 
 WORKDIR /home/marvin/docker
-
-ADD res/.vimrc res/.zshrc /home/marvin/
 
 ENTRYPOINT ["/bin/zsh"]
