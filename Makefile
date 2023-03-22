@@ -1,7 +1,7 @@
 all: build
 
 build:
-	docker build -t jkutkut/docker4c .
+	docker build -t jkutkut/docker4c:v1.0.0 .
 	echo "Done! Now you can run it!"
 
 run:
