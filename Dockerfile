@@ -19,11 +19,18 @@ RUN useradd -m -s /bin/zsh marvin && \
 	chmod 0440 /etc/sudoers.d/marvin && \
 	passwd -d marvin
 
+RUN chsh -s zsh marvin
+
 USER marvin
 
-ADD res/.vimrc /home/marvin/.vimrc
-ADD res/.zshrc /home/marvin/.zshrc
+WORKDIR /home/marvin/
 
-WORKDIR /home/marvin/app
+RUN curl -s https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh --output ./install.sh && \
+	sh ./install.sh --unattended --skip-chsh --keep-zshrc && \
+	rm ./install.sh
+
+WORKDIR /home/marvin/docker
+
+ADD res/.vimrc res/.zshrc /home/marvin/
 
 ENTRYPOINT ["/bin/zsh"]
