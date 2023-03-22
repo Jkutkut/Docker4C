@@ -6,7 +6,7 @@ colorscheme pablo
 set hidden
 
 set mouse=a
-set number relativenumber
+set number
 
 set tabstop=4
 set shiftwidth=4
@@ -26,7 +26,7 @@ set showmatch
 set hlsearch
 
 " Show special chars
-set listchars=tab:→\ ,trail:·,space:·
+set listchars=tab:→\ ,trail:·
 set list
 
 " Auto completion

@@ -14,6 +14,8 @@ RUN apt-get update && apt-get install -y \
  clang \
  && rm -rf /var/lib/apt/lists/*
 
+# Sanitize in clang
+
 RUN useradd -m -s /bin/zsh marvin && \
 	echo "marvin ALL=(ALL) ALL" > /etc/sudoers.d/marvin && \
 	chmod 0440 /etc/sudoers.d/marvin && \
