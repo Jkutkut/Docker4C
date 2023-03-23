@@ -3,7 +3,7 @@ name: Publish Docker image in dockerhub
 on:
   push:
     tags:
-      - 'v1.*.0'
+      - '*'
 jobs:
   push_to_registry:
     name: Push Docker image to Docker Hub
