@@ -1,7 +1,7 @@
 name: Publish Docker image in dockerhub
 
 on:
-  push:
+  create:
     tags:
       - '*'
 jobs:
