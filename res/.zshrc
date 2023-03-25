@@ -22,3 +22,7 @@ alias csanitize='gcc -Wall -Wextra -Werror -fsanitize=address'
 alias g='g++ -Wall -Wextra -Werror'
 alias c='clang++ -Wall -Wextra -Werror'
 alias e='g srcs/test*.cpp > /dev/pts/1; c srcs/test*.cpp > /dev/pts/2'
+
+alias vfull='valgrind --leak-check=full --show-leak-kinds=all --undef-value-errors=no --trace-children=yes --track-fds=yes'
+
+alias githubrepo='echo Made with care by Jkutkut. Repository:; echo https://github.com/jkutkut/docker4c'
