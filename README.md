@@ -11,10 +11,19 @@ This repository contains all the logic required to be able to compile and run C 
 ## Usage:
 ### Run specific directory:
 - Go to the directory you want to use inside the container.
-- Run:
+- Run in Mac:
+  - Open the Docker App.
+  - Run the following command:
 ```zsh
 docker run -it --rm -v $(PWD):/home/marvin/docker jkutkut/docker4c
 ```
+
+- Run in Linux:
+  - Run the following command:
+```zsh
+docker run -it --rm -v $(pwd):/home/marvin/docker jkutkut/docker4c
+```
+
 
 ### Run with all my things:
 Replace `$(PWD)` with the directory you want.
@@ -29,8 +38,10 @@ docker run -it --rm -v ~/Desktop:/home/marvin/docker jkutkut/docker4c
 - valgrind
 - clang
 - zsh:
-- Oh-my-zsh
-- vim
+  - Oh-my-zsh
+  - Custom .zshrc
+- vim:
+  - Custom .vimrc
 - git
 - zip
 - curl
@@ -39,10 +50,42 @@ docker run -it --rm -v ~/Desktop:/home/marvin/docker jkutkut/docker4c
 	- readline-common
 	- libreadline-dev
 
+## Customization:
+If you want to add more tools or features to the container, feel free to contribute to this repository.
+
+If you just want to personalize your container, you can create a permanent container by removing the `--rm` flag from the command (and naming it so it will be easy to handle later). Keep in mind that you will have to manage the container yourself:
+
+- Create and run the container:
+```zsh
+docker run -it --name d4c -v $(PWD):/home/marvin/docker jkutkut/docker4c
+```
+```zsh
+docker run -it --name d4c -v $(pwd):/home/marvin/docker jkutkut/docker4c
+```
+
+- Stop the container:
+```zsh
+docker stop d4c
+```
+
+- Restart the container:
+```zsh
+docker start d4c
+```
+
+- Delete the container (Requires to stop it first):
+```zsh
+docker rm d4c
+```
+
+
 ## Versions:
-You can see all the containers already created [here](https://hub.docker.com/r/jkutkut/docker4c) or build your own from the code from this repository.
+You can see all the images already created [here](https://hub.docker.com/r/jkutkut/docker4c) or build your own from the code from this repository.
 ```zsh
 docker run -it --rm -v $(PWD):/home/marvin/docker jkutkut/docker4c:v1.X.X
+```
+```zsh
+docker run -it --rm -v $(pwd):/home/marvin/docker jkutkut/docker4c:v1.X.X
 ```
 
 ## Special thanks:
