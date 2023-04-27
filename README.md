@@ -15,13 +15,13 @@ This repository contains all the logic required to be able to compile and run C 
   - Open the Docker App.
   - Run the following command:
 ```zsh
-docker run -it --rm -v $(PWD):/home/marvin/docker jkutkut/docker4c
+docker run -it --rm -v $(PWD):/docker jkutkut/docker4c
 ```
 
 - Run in Linux:
   - Run the following command:
 ```zsh
-docker run -it --rm -v $(pwd):/home/marvin/docker jkutkut/docker4c
+docker run -it --rm -v $(pwd):/docker jkutkut/docker4c
 ```
 
 
@@ -30,7 +30,13 @@ Replace `$(PWD)` with the directory you want.
 
 **Example**: Run with the Desktop:
 ```zsh
-docker run -it --rm -v ~/Desktop:/home/marvin/docker jkutkut/docker4c
+docker run -it --rm -v ~/Desktop:/docker jkutkut/docker4c
+```
+
+### Update:
+If you want to use the latest version, run this before using it:
+```zsh
+docker pull jkutkut/docker4c:latest
 ```
 
 ## Features:
@@ -57,10 +63,10 @@ If you just want to personalize your container, you can create a permanent conta
 
 - Create and run the container:
 ```zsh
-docker run -it --name d4c -v $(PWD):/home/marvin/docker jkutkut/docker4c
+docker run -it --name d4c -v $(PWD):/docker jkutkut/docker4c
 ```
 ```zsh
-docker run -it --name d4c -v $(pwd):/home/marvin/docker jkutkut/docker4c
+docker run -it --name d4c -v $(pwd):/docker jkutkut/docker4c
 ```
 
 - Stop the container:
@@ -82,10 +88,10 @@ docker rm d4c
 ## Versions:
 You can see all the images already created [here](https://hub.docker.com/r/jkutkut/docker4c) or build your own from the code from this repository.
 ```zsh
-docker run -it --rm -v $(PWD):/home/marvin/docker jkutkut/docker4c:v1.X.X
+docker run -it --rm -v $(PWD):/docker jkutkut/docker4c:v1.X.X
 ```
 ```zsh
-docker run -it --rm -v $(pwd):/home/marvin/docker jkutkut/docker4c:v1.X.X
+docker run -it --rm -v $(pwd):/docker jkutkut/docker4c:v1.X.X
 ```
 
 ## Special thanks:
