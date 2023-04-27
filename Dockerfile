@@ -12,21 +12,15 @@ RUN apt-get update && apt-get install -y \
 	readline-common \
 	libreadline-dev \
 	clang \
-	&& rm -rf /var/lib/apt/lists/* && \
-	useradd -m marvin && \
-	echo "marvin ALL=(ALL) ALL" > /etc/sudoers.d/marvin && \
-	chmod 0440 /etc/sudoers.d/marvin && \
-	passwd -d marvin && \
-	chsh -s zsh marvin
+	&& rm -rf /var/lib/apt/lists/*
 
-USER marvin
+RUN curl -s https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh --output /install.sh && \
+	/bin/sh /install.sh --unattended --skip-chsh --keep-zshrc && \
+	rm /install.sh
 
-COPY --chown=marvin:marvin res/.vimrc res/.zshrc /home/marvin/
+COPY res/.vimrc res/.zshrc /root/
 
-RUN curl -s https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh --output /home/marvin/install.sh && \
-	/bin/sh /home/marvin/install.sh --unattended --skip-chsh --keep-zshrc && \
-	rm /home/marvin/install.sh
-
-WORKDIR /home/marvin/docker
+WORKDIR /docker
+VOLUME /docker
 
 ENTRYPOINT ["/bin/zsh"]
